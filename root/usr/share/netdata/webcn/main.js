@@ -517,8 +517,8 @@ function renderStreamedHosts(options) {
     let html = `<div class="info-item">Databases streamed to this agent</div>`;
 
     var base = document.location.origin.toString() +
-      document.location.pathname.toString()
-        .replace(isOldSuffix ? `/${OLD_DASHBOARD_SUFFIX}` : "", "");
+        document.location.pathname.toString()
+            .replace(isOldSuffix ? `/${OLD_DASHBOARD_SUFFIX}` : "", "");
     if (base.endsWith("/host/" + options.hostname + "/")) {
         base = base.substring(0, base.length - ("/host/" + options.hostname + "/").toString().length);
     }
@@ -1822,13 +1822,13 @@ function renderPage(menus, data) {
     sidebar += '<li class="" style="padding-top:15px;"><a href="https://learn.netdata.cloud/docs/agent/collectors/quickstart/" target="_blank"><i class="fas fa-plus"></i> 加入更多图表</a></li>';
     sidebar += '<li class=""><a href="https://learn.netdata.cloud/docs/agent/health/quickstart/" target="_blank"><i class="fas fa-plus"></i> 加入更多警报</a></li>';
     sidebar += '<li class="" style="margin:20px;color:#666;"><small>每 ' +
-      ((data.update_every === 1) ? '秒' : data.update_every.toString() + ' 秒') + ', ' +
-      '收集<strong>' + data.dimensions_count.toLocaleString() + '</strong> 上的度量 ' +
-      data.hostname.toString() + ', 把它们呈现在<strong>' +
-      data.charts_count.toLocaleString() + '</strong> 图表' +
-      (isMemoryModeDbEngine ? '' : ',') + // oxford comma
-      ' 监控<strong>' +
-      data.alarms_count.toLocaleString() + '</strong> 警报.';
+        ((data.update_every === 1) ? '秒' : data.update_every.toString() + ' 秒') + ', ' +
+        '收集<strong>' + data.dimensions_count.toLocaleString() + '</strong> 上的度量 ' +
+        data.hostname.toString() + ', 把它们呈现在<strong>' +
+        data.charts_count.toLocaleString() + '</strong> 图表' +
+        (isMemoryModeDbEngine ? '' : ',') + // oxford comma
+        ' 监控<strong>' +
+        data.alarms_count.toLocaleString() + '</strong> 警报.';
 
     if (!isMemoryModeDbEngine) {
         sidebar += '<br />&nbsp;<br />获取更多历史记录 ';
@@ -2364,17 +2364,17 @@ function alarmsUpdateModal() {
                 exportOptions: {
                     fileName: 'netdata_alarm_log'
                 },
-                onClickRow: function (row, $element,field) {
+                onClickRow: function (row, $element, field) {
                     void (field);
                     void ($element);
                     let main_url;
-                    let common_url = "&host=" + encodeURIComponent(row['hostname']) + "&chart=" + encodeURIComponent(row['chart']) + "&family=" + encodeURIComponent(row['family']) + "&alarm=" + encodeURIComponent(row['name']) + "&alarm_unique_id=" + row['unique_id'] + "&alarm_id=" + row['alarm_id'] + "&alarm_event_id=" +  row['alarm_event_id'] + "&alarm_when=" + row['when'];
+                    let common_url = "&host=" + encodeURIComponent(row['hostname']) + "&chart=" + encodeURIComponent(row['chart']) + "&family=" + encodeURIComponent(row['family']) + "&alarm=" + encodeURIComponent(row['name']) + "&alarm_unique_id=" + row['unique_id'] + "&alarm_id=" + row['alarm_id'] + "&alarm_event_id=" + row['alarm_event_id'] + "&alarm_when=" + row['when'];
                     if (NETDATA.registry.isUsingGlobalRegistry() && NETDATA.registry.machine_guid != null) {
                         main_url = "https://netdata.cloud/alarms/redirect?agentID=" + NETDATA.registry.machine_guid + common_url;
                     } else {
-                        main_url = NETDATA.registry.server + "/goto-host-from-alarm.html?" + common_url ;
+                        main_url = NETDATA.registry.server + "/goto-host-from-alarm.html?" + common_url;
                     }
-                    window.open(main_url,"_blank");
+                    window.open(main_url, "_blank");
                 },
                 rowStyle: function (row, index) {
                     void (index);
@@ -3046,7 +3046,7 @@ function notifyForUpdate(force) {
         if (sha1 === null) {
             save = false;
             versionLog('<p><big>取得您的 netdata 版本失败！</big></p>');
-        else {
+        } else {
             save = true;
             versionLog('<p><big>您已经是最新版本的 netdata！</big></p>');
         }
@@ -4003,13 +4003,13 @@ function scrollToChartAfterHidingModal(chart, alarmDate, alarmStatus) {
 
         if (['WARNING', 'CRITICAL'].includes(alarmStatus)) {
             const currentChartState = NETDATA.options.targets.find(
-              (chartState) => chartState.id === chart,
+                (chartState) => chartState.id === chart,
             )
             const twoMinutes = 2 * 60 * 1000
             NETDATA.globalPanAndZoom.setMaster(
-              currentChartState,
-              alarmDate - twoMinutes,
-              alarmDate + twoMinutes,
+                currentChartState,
+                alarmDate - twoMinutes,
+                alarmDate + twoMinutes,
             )
         }
     };
