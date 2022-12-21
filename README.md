@@ -1,12 +1,10 @@
+修复了原作者的权限错误和js错误，格式化部分代码
+
 ### 下载源码方法:
 
  ```Brach
- 
-    # 下载源码
-	
     git clone https://github.com/sirpdboy/luci-app-netdata package/luci-app-netdata
     make menuconfig
-	
  ``` 
 ### 配置菜单
 
